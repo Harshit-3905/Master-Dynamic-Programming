@@ -36,9 +36,9 @@ class Unique_Paths {
         if (dp[m][n] != -1)
             return dp[m][n];
         if (m > 0)
-            top = Recursion(m - 1, n);
+            top = Memoization(m - 1, n, dp);
         if (n > 0)
-            left = Recursion(m, n - 1);
+            left = Memoization(m, n - 1, dp);
         dp[m][n] = left + top;
         return dp[m][n];
     }
