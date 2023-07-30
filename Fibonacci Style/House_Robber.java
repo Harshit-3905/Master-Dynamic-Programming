@@ -49,7 +49,6 @@ class House_Robber {
         int n = house.length;
         if (n == 1)
             return house[0];
-        int dp[] = new int[n];
         int curr = 0;
         int prev1 = house[0];
         int prev = Math.max(house[0], house[1]);
