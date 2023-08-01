@@ -36,10 +36,11 @@ class Triangle {
                 else
                     curr[j] = triangle.get(i).get(j) + prev[j];
             }
+            prev = curr.clone();
         }
         int ans = Integer.MAX_VALUE;
         for (int j = 0; j < n; j++)
-            ans = Math.min(ans, dp[n - 1][j]);
+            ans = Math.min(ans, prev[j]);
         return ans;
     }
 }
