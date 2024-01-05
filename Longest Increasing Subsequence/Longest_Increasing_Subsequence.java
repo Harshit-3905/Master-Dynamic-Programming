@@ -14,7 +14,8 @@ class Longest_Increasing_Subsequence {
         // Arrays.fill(dp[i], -1);
         // int ans = Memoization(nums, 0, 1, dp);
         // int ans = Tabulation(nums);
-        int ans = Space_Optimised(nums);
+        // int ans = Space_Optimised(nums);
+        int ans = Binary_Search(nums);
         System.out.println(ans);
         in.close();
     }
@@ -83,4 +84,32 @@ class Longest_Increasing_Subsequence {
         }
         return next[0];
     }
+
+    static int Binary_Search(int nums[]) {
+        List<Integer> list = new ArrayList<>();
+        int n = nums.length;
+        for (int i = 0; i < n; i++) {
+            if (list.isEmpty() || list.get(list.size() - 1) < nums[i])
+                list.add(nums[i]);
+            else {
+                int s = 0, e = list.size() - 1;
+                int pos = -1;
+                while (s <= e) {
+                    int mid = s + (e - s) / 2;
+                    if (list.get(mid) > nums[i]) {
+                        pos = mid;
+                        e = mid - 1;
+                    } else if (list.get(mid) < nums[i]) {
+                        s = mid + 1;
+                    } else {
+                        pos = mid;
+                        break;
+                    }
+                }
+                list.set(pos, nums[i]);
+            }
+        }
+        return list.size();
+    }
+
 }
