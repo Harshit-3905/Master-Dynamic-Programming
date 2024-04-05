@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Solution {
+public class Grid_Paths {
     public static void main(String[] args) throws java.lang.Exception {
         FastReader in = new FastReader();
         int n = in.nextInt();
